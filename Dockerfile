@@ -10,7 +10,8 @@ RUN curl --silent --show-error --fail --location \
     "https://github.com/caddyserver/caddy/releases/download/v${CADDY_VERSION}/caddy_${CADDY_VERSION}_linux_amd64.deb" \
     && dpkg -i /tmp/caddy.deb \
     && rm -f /tmp/caddy.deb \
-    && caddy version
+    && caddy version \
+    && docker-php-ext-install mbstring pdo pdo_mysql opcache
 
 # Install PHP extensions
 RUN docker-php-ext-install mbstring pdo pdo_mysql
